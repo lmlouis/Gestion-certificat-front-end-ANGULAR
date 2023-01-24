@@ -1,0 +1,25 @@
+
+<div class="container d-grid gap-2 d-flex align-items-center justify-content-center vh-100d-flex align-items-center justify-content-center vh-100">
+
+  <div>
+    <h1 class="m-2 h3 mb-3 font-weight-normal">S'authentifier</h1>
+    <ngb-alert *ngIf="!this.securityUserService.isLoggedIn && this.IsSubmited"
+        [dismissible]="true"
+        type='warning'>
+      <strong>Erreur</strong>
+      <p>{{this.messageAuth}}</p>
+    </ngb-alert>
+  </div>
+  <form class="form-signin" (ngSubmit)="OnSubmit(referenceForm)" #referenceForm="ngForm">
+    <label for="inputEmail" class="sr-only">Adresse Email</label>
+    <input  type="email" id="inputEmail" class="form-control" placeholder="Address Email"
+    ngModel name="email">
+
+    <label for="inputPassword" class="sr-only">Mot de Passe</label>
+    <input  type="password" id="inputPassword" class="form-control" placeholder="Mot de Passe"
+    ngModel name="password">
+    <button class="m-2 btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+    <a routerLink="/sign-up" class="btn btn-lg" type="submit">Créer un compte</a>
+  </form>
+  <img class="m-4" src="../../../assets/login.jpg" height="500" width="auto">
+</div>

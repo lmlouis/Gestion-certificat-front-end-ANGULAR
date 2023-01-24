@@ -1,0 +1,25 @@
+<h1 class="container text-center">Certificat</h1>
+
+
+<section class="">
+  <app-search-certificat></app-search-certificat>
+  <div *ngIf="currentUser.userRole=='ADMIN'" class="container">
+    <div>
+      <div class="container-fluid">
+        <div>
+          <ul>
+            <button class="btn btn-link">
+              <a routerLink="/edit-certificat">Créer certificat </a>
+            </button>
+            <button class="btn btn-link">
+              <a href="#">Voir la liste des membres</a>
+            </button>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  <app-list-certificat></app-list-certificat>
+</section>
+

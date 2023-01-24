@@ -1,0 +1,33 @@
+<div class="container">
+  <div>
+    <h1 class="m-2 h3 mb-3 font-weight-normal">Editer Profile</h1>
+  </div>
+
+  <form class="form-signin" [formGroup]="UserformGroup" (ngSubmit)="OnSubmit()">
+    <label for="inputEmail" class="sr-only">Votre nom complet</label>
+    <input  type="email" id="inputEmail" class="form-control"
+    formControlName="userName">
+    <div *ngIf="UserformGroup.controls['userName'].invalid && (UserformGroup.controls['userName'].dirty || UserformGroup.controls['userName'].touched)" class="alert alert-danger">
+      <div>
+        <div *ngIf="UserformGroup.controls['userName'].errors?.['required']">Ce champ est <strong>obligatoire (*)</strong></div>
+        <ul>
+          <li *ngIf="UserformGroup.controls['userName'].errors?.['maxlength']">Taille maximum <strong>120 caractères</strong></li>
+        </ul>
+    </div>
+  </div>
+
+
+    <label for="inputPassword" class="sr-only">Votre statut</label>
+    <input  type="text" class="form-control"
+    formControlName="userStatus" placeholder="Etudiant">
+    <div *ngIf="UserformGroup.controls['userStatus'].invalid && (UserformGroup.controls['userStatus'].dirty || UserformGroup.controls['password'].touched)" class="alert alert-danger">
+      <div>
+        <ul>
+          <li *ngIf="UserformGroup.controls['userStatus'].errors?.['minlength']">Taille minimum <strong>2 caractères</strong></li>
+          <li *ngIf="UserformGroup.controls['userStatus'].errors?.['maxlength']">Taille maximum <strong>120 caractères</strong></li>
+        </ul>
+    </div>
+  </div>
+    <button [disabled]="UserformGroup.invalid" class="m-2 btn btn-lg btn-primary btn-block" type="submit">Enregistrer</button>
+  </form>
+</div>

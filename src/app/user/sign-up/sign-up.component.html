@@ -1,0 +1,47 @@
+<div class="container d-grid gap-2 d-flex align-items-center justify-content-center vh-100d-flex align-items-center justify-content-center vh-100">
+  <div>
+    <h1 class="m-2 h3 mb-3 font-weight-normal">S'enrégistrer</h1><br>
+    <ngb-alert *ngIf="!this.securityUserService.isLoggedIn && this.IsSubmited"
+        [dismissible]="true"
+        type='warning'>
+      <strong>Erreur</strong>
+      <p>{{this.messageAuth}}</p>
+    </ngb-alert>
+  </div>
+
+  <form class="form-signin" [formGroup]="UserformGroup" (ngSubmit)="OnSubmit()">
+    <label for="inputEmail" class="sr-only">Adresse Email</label>
+    <input  type="email" id="inputEmail" class="form-control"
+    formControlName="email">
+    <div *ngIf="UserformGroup.controls['email'].invalid && (UserformGroup.controls['email'].dirty || UserformGroup.controls['email'].touched)" class="alert alert-danger">
+      <div>
+        <div *ngIf="UserformGroup.controls['email'].errors?.['required']">Ce champ est <strong>obligatoire (*)</strong></div>
+        <ul>
+          <li *ngIf="UserformGroup.controls['email'].errors?.['minlength']">Taille minimum <strong>5 caractères</strong></li>
+          <li *ngIf="UserformGroup.controls['email'].errors?.['maxlength']">Taille maximum <strong>45 caractères</strong></li>
+          <li *ngIf="UserformGroup.controls['email'].errors?.['email']">Format doit contenir <strong>nom@domaine.abréviation(entre 2,4 caractères)</strong></li>
+        </ul>
+    </div>
+  </div>
+
+
+    <label for="inputPassword" class="sr-only">Mot de Passe</label>
+    <input  type="text" id="inputPassword" class="form-control"
+    formControlName="password">
+    <div *ngIf="UserformGroup.controls['password'].invalid && (UserformGroup.controls['password'].dirty || UserformGroup.controls['password'].touched)" class="alert alert-danger">
+      <div>
+        <div *ngIf="UserformGroup.controls['password'].errors?.['required']">Ce champ est <strong>obligatoire (*)</strong></div>
+        <ul>
+          <li *ngIf="UserformGroup.controls['password'].errors?.['minlength']">Taille minimum <strong>6 caractères</strong></li>
+          <li *ngIf="UserformGroup.controls['password'].errors?.['maxlength']">Taille maximum <strong>20 caractères</strong></li>
+          <li *ngIf="UserformGroup.controls['password'].errors?.['pattern']">Format doit contenir <strong>  Minuscule [a-z]+ Majuscule [A-Z]+ Nombre [0-9]+ caractères spéciaux [$,?,-~!^_@]</strong></li>
+        </ul>
+    </div>
+  </div>
+    <button [disabled]="UserformGroup.invalid" class="m-2 btn btn-lg btn-primary btn-block" type="submit">Création</button>
+    <a  routerLink="/sign-in" class="btn btn-lg" type="submit">Se connecter</a>
+  </form>
+  <img class="m-4" src="../../../assets/registration.jpg" height="500" width="auto">
+</div>
+
+

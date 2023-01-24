@@ -1,0 +1,14 @@
+<app-header></app-header>
+  <ngb-alert *ngIf="this.isAuth"
+            [dismissible]="true"
+            type='warning'>
+    <strong>Bienvenu</strong>
+    <p>{{this.message}}</p>
+  </ngb-alert>
+  <section>
+    <app-certificat></app-certificat>
+  </section>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+
+

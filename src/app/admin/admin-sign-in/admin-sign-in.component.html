@@ -1,0 +1,17 @@
+<div class="container">
+
+  <div>
+    <h1 class="m-2 h3 mb-3 font-weight-normal">Login Admin</h1>
+  </div>
+  <form class="form-signin" (ngSubmit)="OnSubmit(signinForm)" #signinForm="ngForm">
+    <label for="inputEmail" class="sr-only">Adresse Email</label>
+    <input  type="email" id="inputEmail" class="form-control" placeholder="Address Email"
+    ngModel name="email">
+
+    <label for="inputPassword" class="sr-only">Mot de Passe</label>
+    <input  type="password" id="inputPassword" class="form-control" placeholder="Mot de Passe"
+    ngModel name="password">
+    <button class="m-2 btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+  </form>
+</div>
+

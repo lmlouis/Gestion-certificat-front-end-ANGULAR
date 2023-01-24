@@ -1,0 +1,56 @@
+<div class="container">
+  <div>
+    <h1 class="m-2 h3 mb-3 font-weight-normal">Créer un certificat</h1>
+  </div>
+
+  <form class="form-signin" [formGroup]="certificatformGroup" (ngSubmit)="OnSubmit()">
+    <label for="certificatIntittule" class="sr-only">Intitulé</label>
+    <input  type="text" id="certificatIntittule" class="form-control"
+    formControlName="certificatIntittule">
+    <div *ngIf="certificatformGroup.controls['certificatIntittule'].invalid && (certificatformGroup.controls['certificatIntittule'].dirty || certificatformGroup.controls['certificatIntittule'].touched)" class="alert alert-danger">
+      <div>
+        <div *ngIf="certificatformGroup.controls['certificatIntittule'].errors?.['required']">Ce champ est <strong>obligatoire (*)</strong></div>
+        <ul>
+          <li *ngIf="certificatformGroup.controls['certificatIntittule'].errors?.['maxlength']">Taille maximum <strong>255 caractères</strong></li>
+        </ul>
+    </div>
+  </div>
+
+  <label for="certificatDate" class="sr-only">Date de Certification</label>
+  <input  type="date" id="certificatIntittule" class="form-control"
+  formControlName="certificatDate">
+  <div *ngIf="certificatformGroup.controls['certificatDate'].invalid && (certificatformGroup.controls['certificatDate'].dirty || certificatformGroup.controls['certificatDate'].touched)" class="alert alert-danger">
+    <div>
+      <div *ngIf="certificatformGroup.controls['certificatDate'].errors?.['required']">Ce champ est <strong>obligatoire (*)</strong></div>
+  </div>
+</div>
+
+<label for="certificatText" class="sr-only">Description</label>
+<textarea formControlName="certificatText" id="certificatText" class="form-control" cols="30" rows="10"></textarea>
+
+<div *ngIf="certificatformGroup.controls['certificatText'].invalid && (certificatformGroup.controls['certificatText'].dirty || certificatformGroup.controls['certificatText'].touched)" class="alert alert-danger">
+  <div>
+    <div *ngIf="certificatformGroup.controls['certificatText'].errors?.['required']">Ce champ est <strong>obligatoire (*)</strong></div>
+    <ul>
+      <li *ngIf="certificatformGroup.controls['certificatText'].errors?.['maxlength']">Taille maximum <strong>120 caractères</strong></li>
+    </ul>
+</div>
+</div>
+
+<label for="certifcatIsvalided" class="sr-only">Etat du certificat </label>
+<select formControlName="certifcatIsvalided" id="certifcatIsvalided" class="form-control">
+  <option value="true">Valide</option>
+  <option value="false">Non Valide</option>
+</select>
+
+<div *ngIf="certificatformGroup.controls['certifcatIsvalided'].invalid && (certificatformGroup.controls['certifcatIsvalided'].dirty || certificatformGroup.controls['certifcatIsvalided'].touched)" class="alert alert-danger">
+  <div>
+    <div>Selectionner <strong>L'état de certificat </strong></div>
+</div>
+</div>
+
+
+    <button [disabled]="certificatformGroup.invalid" class="m-2 btn btn-lg btn-primary btn-block" type="submit">Enregistrer</button>
+  </form>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div class="row height d-flex justify-content-center align-items-center">
+
+    <div class="m-2 col-9 row">
+
+      <form class="search"  [formGroup]="SearchCertificatformGroup" (ngSubmit)="OnSearch()">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" placeholder="Rechercher un certificat" formControlName="name">
+        <button type="submit" class="m-2 btn btn-primary">Chercher</button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="container" *ngFor="let certificat of list_certificate;">
+  <div class="row m-2">
+    <div class="card">
+      <img class="col-4 col-sm-2 offset-md-2" src="../../../assets/certificat-illustration.jpg" alt="certificat">
+      <div class="">
+        <h5 class="text-center">{{certificat.certificatIntittule}}</h5>
+        <p class="text-center">{{certificat.certificatText}}</p>
+          <button (click)="inscription(certificat.certificatId)"  class="col-4 col-sm-2 offset-md-2 text-center btn btn-primary">S'inscrire</button>
+      </div>
+      <div class="text-center">
+        <small class="m-2">{{certificat.certificatDatet}}</small>
+      </div>
+    </div>
+  </div>
+</div>
